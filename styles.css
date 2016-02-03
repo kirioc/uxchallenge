@@ -1,0 +1,39 @@
+#type {visibility:hidden; width:1px}
+
+ul.subheadings{padding:0px;,margin:0px;}
+ul.subheadings li h2 span{float:right; cursor:pointer}
+ul.subheadings li {list-style-type: none;}
+#activeContent{clear:both; padding-top:10px;}
+
+ul.subheadings p {	
+	visibility:show ;max-height:500px;opacity:1; 
+	/* CSS transitions, */
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+
+/* media queries for accordion layout */
+@media screen and (max-width: 479px){ 
+	#type {visibility:hidden; width:1px} /* Javascript will use this #type to identify which current screen is. width = 1 ->accordions */
+	ul.subheadings li h2 {border:1px solid black; margin:0px;cursor:pointer;padding:10px 10px 10px 10px;}
+	ul.subheadings li h2 span{display:inline-block;} /* the span +- only show in accordions */
+	#activeContent{display:none;} /* #activeContent is used in Tab only. So in accordions it is hidden */
+	.hide{visibility:hidden;max-height:0px !important; opacity:0 !important;  }
+}
+/* media queries for list */
+@media screen and (min-width: 480px) and (max-width: 1199px){
+	#type {visibility:hidden; width:2px} /* Javascript will use this #type to identify which current screen is. width = 2 -> list */
+	ul.subheadings li h2 span{display:none;} /* the span +- only show in accordions. Therefore, it is hidden here */
+	#activeContent{display:none;} /* #activeContent is used in Tab only. So in list is hidden */
+}
+/* media queries for tabbed layout*/
+@media screen and (min-width: 1200px){
+	#type {visibility:hidden; width:3px} /* Javascript will use this #type to identify which current screen is. width = 3 -> tabbed */
+	ul.subheadings li {float:left; } /* float:left to make a tabbed-like */
+	ul.subheadings li h2 {border:1px solid black; margin:0px;cursor:pointer; padding:10px 10px 10px 10px;}
+	ul.subheadings li h2 span{display:none;} /* the span +- only show in accordions. Therefore, it is hidden here */
+	#activeContent{display:block;} /* #activeContent is used in Tab only. So in tabbed it is shown to store the recent expaneded content */
+	.hide{display:none;}
+}
